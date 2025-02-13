@@ -1,0 +1,32 @@
+<Window
+    x:Class="MusicStoreApp.Views.MusicStoreWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:MusicStoreApp.Views"
+    Title="MusicStoreWindow"
+    Width="1200"
+    Height="800"
+    ExtendClientAreaToDecorationsHint="True"
+    TransparencyLevelHint="AcrylicBlur"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+
+    <Panel>
+        <ExperimentalAcrylicBorder IsHitTestVisible="False">
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial
+                    BackgroundSource="Digger"
+                    MaterialOpacity="0.65"
+                    TintColor="Black"
+                    TintOpacity="1" />
+            </ExperimentalAcrylicBorder.Material>
+        </ExperimentalAcrylicBorder>
+
+        <Panel Margin="40" >
+            <local:MusicStoreView />
+        </Panel>
+    </Panel>
+
+</Window>

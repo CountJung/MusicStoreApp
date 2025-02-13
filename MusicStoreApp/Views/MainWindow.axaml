@@ -1,12 +1,58 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:MusicStoreApp.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:views="clr-namespace:MusicStoreApp.Views"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="MusicStoreApp.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="MusicStoreApp">
-        <views:MainView />
+<Window
+    x:Class="MusicStoreApp.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:MusicStoreApp.Views"
+    xmlns:vm="using:MusicStoreApp.ViewModels"
+    Title="MusicStoreApp"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="Transparent"
+    ExtendClientAreaToDecorationsHint="True"
+    Icon="/Assets/avalonia-logo.ico"
+    TransparencyLevelHint="AcrylicBlur"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <!--<views:MainView />-->
+
+    <Panel>
+        <ExperimentalAcrylicBorder IsHitTestVisible="False">
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial
+                    BackgroundSource="Digger"
+                    MaterialOpacity="0.65"
+                    TintColor="Black"
+                    TintOpacity="1" />
+            </ExperimentalAcrylicBorder.Material>
+        </ExperimentalAcrylicBorder>
+
+        <Button
+            Margin="50"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Command="{Binding BuyMusicCommand}"
+            Content="Buy Music">
+            <PathIcon Data="{StaticResource store_microsoft_regular}" />
+        </Button>
+
+        <ItemsControl Margin="30,100,0,0" ItemsSource="{Binding Albums}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <views:AlbumView Margin="0,0,20,20" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Panel>
 </Window>
